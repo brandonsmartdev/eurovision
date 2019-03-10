@@ -1,0 +1,18 @@
+h1 {
+	text-align: center;
+}
+
+#glScreen {
+	/*display: block;*/
+	/*margin: 0px auto;*/
+}
+
+#test-slider {
+	display: block;
+	/*margin: 0px auto 10px auto;*/
+	width: 90%;
+}
+
+#euroImage {
+	display: none;
+}

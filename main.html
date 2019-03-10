@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="main_style.css">
+		<title>Eurovision Song Contest</title>
+	</head>
+	<body>
+
+		<!-- Hidden Images (for use in shaders) -->
+		<img id="euroImage" src="Images/alphaMap.png" width="2400" height="1600">
+		<img id="euroLogo" src="Images/Eurovision-Logo.svg">
+		<canvas id="euroCanvas" width="2400" height="1600"></canvas>
+		
+		<!-- Header block -->
+		<div id="header">
+			<canvas id="header-background" width="4000" height="4000"></canvas>
+			<canvas id="header-text"></canvas>
+		</div>
+
+		<br>
+
+		<!-- Intro Text -->
+		<h1>How do countries vote in the Eurovision Song Contest?</h1>
+		<p>The Eurovision Song Contest is an annual song contest held between predominantly European countries. Each year, each country submits one original song to the contest, which they perform live on stage. Each country also has a number of points which they can use to vote on other countries' songs.</p>
+		<br>
+		<p>However, many people believe that voting in Eurovision is affected by more than just music. Countries are often accused of voting for their neighbours, or for other culturally similar countries over those that have the best songs. The following visualisations aim to look at the factors affecting how countries sing and vote in Eurovision.</p>
+		
+		<br>
+
+		<!-- Geography Block -->
+		<h2>Geography and Voting Patterns in Eurovision</h2>
+		<p>A common belief held about Eurovision is that countries prefer to vote for countries that are close to them, or are culturally similar. This visualisation aims to look at whether geographic relationships exist in Eurovision voting.</p>
+		<br>
+		<p>Clicking on a country will show a heatmap demonstrating the percentage of votes that country has <i>received</i> from the other countries in Eurovision. The bar graph on the right shows the same information but quantified and sorted. Click on the 'Show Votes From Selected Country' to see what percentage of votes the selected country has <i>given</i> to other Eurovision countries.</p>
+		<br>
+		<div id="geographyBlock">
+			<input id="geographySlider" type="range" min="1975" max="2017"><div id="geographyTowards" class="geographyDirectionBlock">
+				<input id="geographyDirectionTowards" type="radio" name="votingDirection">Show Votes<br>To Selected Country
+			</div><div id="geographyAway" class="geographyDirectionBlock">
+				<input id="geographyDirectionAway" type="radio" name="votingDirection">Show Votes<br>From Selected Country
+			</div>
+			<canvas id="geographyMap" width="2000" height="1500"></canvas><div id="geographyGraphContainer" width="1000" height="1500">
+				<canvas id="geographyGraph" width="1000" height="1500"></canvas>
+			</div>
+		</div>
+
+		<br>
+
+		<!-- Popularity Block -->
+		<h2>Popularity of Countries over Time</h2>
+		<p>This visualisation aims to look at how the popularity of countries has changed over time in Eurovision. The popularity of a country may be dependant on more than just the song they submit, and may be affected by factors such as political events or new countries being added to Eurovision.</p>
+		<br>
+		<p>Selecting a country from the list on the right will show the popularity of that country over time on the left graph. Selecting more than one country (up to a maximum of five countries) will allow you to compare the popularity of different countries over time. Because the data is very noisy, the 'show average' slider can be used to smooth the data and see general trends over time by showing the average position achieved in the given number of years around each data point.</p>
+		<br>
+		<div id="popularityBlock">
+			<div id="popularitySliderText">Show Average of 5 years: </div><input id="popularitySlider" type="range" min="0" max="8">
+			<canvas id="popularityGraph" width="2400" height="1500"></canvas><div id="popularityCountryContainer" width="1000" height="1500">
+				Countries:<br><br>
+				<!-- <input id="popularityCountry1" type="checkbox" name="popularity">Albania<br> -->
+			</div>
+		</div>
+
+		<br>
+
+		<!-- Language Block -->
+		<h2>Language in Eurovision</h2>
+		<p>Since 1999, countries have been able to use any language they choose for their entry to Eurovision. Since this change, English has become an increasing common part of Eurovision, with the majority of countries choosing to use it despite English not being one of their official languages. This visualisation aims to look at the increasing popularity of English, and how countries have used langauge over time.</p>
+		<br>
+		<p>The year slider can be moved in order to change what year the map is displaying, with the legend in the top right showing how many countries used each language. Clicking on a country will show on the graph to the right what languages that country has used in Eurovision since 1999. 'Multiple' indicates that the country used multiple languages in the same song for a given year.</p>
+		<br>
+		<div id="languageBlock">
+			<div id="languageSliderText">Year: 2000</div><input id="languageSlider" type="range" min="1999" max="2017">
+			<canvas id="languageMap" width="2000" height="1500"></canvas><canvas id="languageGraph" width="1000" height="1500"></canvas>
+		</div>
+
+		<br>
+		<br>
+
+		<!-- References -->
+		<div>
+			<div id="referenceContainer">
+				<h1>References</h1>
+				<div class="referenceBlock">
+					<h3>Data Sources</h3>
+					<ul>
+						<li><b>Eurovision Voting</b>: https://www.kaggle.com/datagraver/eurovision-song-contest-scores-19752017</li><br>
+						<li><b>Eurovision Order</b>: eschome.org</li><br>
+						<li><b>Eurovision Language</b>: diggiloo.net</li><br>
+					</ul>
+				</div><div class="referenceBlock">
+					<h3>Images</h3>
+					<ul>
+						<li><b>Eurovision Logo</b>: https://en.wikipedia.org/wiki/File:Eurovision_Song_Contest.svg</li><br>
+						<li><b>World Map</b>: https://upload.wikimedia.org/wikipedia/commons/6/63/A_large_blank_world_map_with_oceans_marked_in_blue.svg</li><br>
+					</ul>
+				</div><div class="referenceBlock">
+					<h3>Fonts</h3>
+					<ul>
+						<li><b>Gotham Bold</b>: https://github.com/codeforamerica/codeforall/blob/master/type/Gotham-Bold.ttf</li><br>
+						<li><b>Gotham Light</b>: https://github.com/mapzen/open/blob/master/assets/fonts/Gotham-Light.ttf</li><br>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<br>
+		<br>	
+
+		<!-- Scripts -->
+		<script id="databaseOne" type="text/javascript" src="Scripts/first_database.js"></script>
+		<script id="databaseTwo" type="text/javascript" src="Scripts/second_database.js"></script>
+		<script id="helper" type="text/javascript" src="Scripts/helper_functions.js"></script>
+		<script id="headerScript" type="text/javascript" src="Scripts/header.js"></script>
+		<script id="geographyScript" type="text/javascript" src="Scripts/geography_map.js"></script>
+		<script id="popularityScript" type="text/javascript" src="Scripts/popularity_graph.js"></script>
+		<script id="languageScript" type="text/javascript" src="Scripts/language_map.js"></script>
+		<script id="mainScript" type="text/javascript" src="Scripts/main_script.js"></script>
+
+	</body>
+</html>
